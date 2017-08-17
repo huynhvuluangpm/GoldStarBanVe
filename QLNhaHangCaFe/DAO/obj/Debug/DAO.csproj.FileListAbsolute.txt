@@ -1,0 +1,5 @@
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DAO\bin\Debug\DAO.dll
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DAO\bin\Debug\DAO.pdb
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DAO\obj\Debug\DAO.dll
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DAO\obj\Debug\DAO.pdb

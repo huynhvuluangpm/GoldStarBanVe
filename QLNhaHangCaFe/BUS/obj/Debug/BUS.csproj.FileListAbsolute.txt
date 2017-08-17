@@ -1,0 +1,5 @@
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\BUS\bin\Debug\BUS.dll
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\BUS\bin\Debug\BUS.pdb
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\BUS\obj\Debug\BUS.dll
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\BUS\obj\Debug\BUS.pdb

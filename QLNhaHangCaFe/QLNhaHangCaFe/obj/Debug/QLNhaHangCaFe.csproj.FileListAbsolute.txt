@@ -1,0 +1,11 @@
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\bin\Debug\QLNhaHangCaFe.exe.config
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\bin\Debug\QLNhaHangCaFe.exe
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\bin\Debug\QLNhaHangCaFe.pdb
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.csprojResolveAssemblyReference.cache
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.frmDangNhap.resources
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.Properties.Resources.resources
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.csproj.GenerateResource.Cache
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.exe
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.pdb
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.exe.licenses
+D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\QLNhaHangCaFe\obj\Debug\QLNhaHangCaFe.frmQuanTri.resources
