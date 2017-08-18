@@ -173,10 +173,6 @@
                                 <Columns>
                                     <dx:GridViewDataTextColumn Caption="Mã Nguyên Liệu" FieldName="MaNguyenLieu" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="6" ReadOnly="True">
-                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
-                                        </PropertiesSpinEdit>
-                                    </dx:GridViewDataSpinEditColumn>
 <dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Đơn Giá" VisibleIndex="5" ReadOnly="True">
 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>

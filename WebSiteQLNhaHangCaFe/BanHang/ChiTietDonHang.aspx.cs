@@ -8,19 +8,23 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class DanhSachPhieuNhapHang : System.Web.UI.Page
+    public partial class ChiTietDonHang : System.Web.UI.Page
     {
         dtDanhSachNhapHang data = new dtDanhSachNhapHang();
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGrid();
+            string IDDonHang = Request.QueryString["IDDonHang"];
+            if (IDDonHang != null)
+            {
+                LoadGrid(IDDonHang.ToString());
+            }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string p)
         {
             data = new dtDanhSachNhapHang();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang();
-            gridDonDatHang.DataBind();
+            gridChiTiet.DataSource = data.DanhSachChiTiet(p);
+            gridChiTiet.DataBind();
         }
     }
 }

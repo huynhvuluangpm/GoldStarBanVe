@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [DAXOA] = 0 AND [MatKhau] =N'" + MatKhau + "'";
+                string cmdText = " SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [DAXOA] = 0 AND [MatKhau] =N'" + MatKhau + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -29,7 +29,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [DAXOA] = 0  AND [MatKhau] = N'" + MatKhau + "'";
+                string cmdText = " SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [DAXOA] = 0  AND [MatKhau] = N'" + MatKhau + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -44,7 +44,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_PhanQuyen] WHERE [IDNhomNguoiDung] = " + IDNhomNguoiDung;
+                string cmdText = " SELECT * FROM [CF_NguoiDung] WHERE [IDNhomNguoiDung] = " + IDNhomNguoiDung;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -60,7 +60,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [MatKhau] = N'" + MatKhau + "'";
+                string cmdText = " SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'" + TenDangNhap + "' AND [MatKhau] = N'" + MatKhau + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -78,7 +78,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_NguoiDung] SET [MatKhau] = @MatKhau WHERE [ID] = " + ID;
+                    string cmdText = "UPDATE [CF_NguoiDung] SET [MatKhau] = @MatKhau WHERE [ID] = " + ID;
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@MatKhau", MatKhau);

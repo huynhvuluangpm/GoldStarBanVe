@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
       <script type="text/javascript">
           function OnMoreInfoClick(element, key) {
-              popup.SetContentUrl("ChiTietDonHangDuyetThuMua.aspx?IDDonHang=" + key);
+              popup.SetContentUrl("ChiTietDonHang.aspx?IDDonHang=" + key);
               popup.ShowAtElement();
               // alert(key);
           }
@@ -63,7 +63,7 @@
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="6">
+             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="4">
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataComboBoxColumn Caption="Người Lập" FieldName="IDNguoiLap" VisibleIndex="1">
                  <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
@@ -73,18 +73,18 @@
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="4">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="3">
                  <PropertiesSpinEdit DisplayFormatString="{0:#,# VND}" NumberFormat="Custom">
                  </PropertiesSpinEdit>
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="11">
+             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="7">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
             </dx:GridViewDataButtonEditColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" VisibleIndex="10">
-                 <PropertiesComboBox DataSourceID="SqlChiNhanh" TextField="TenChiNhanh" ValueField="TenChiNhanh">
+             <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" VisibleIndex="6" FieldName="IDChiNhanh">
+                 <PropertiesComboBox DataSourceID="SqlChiNhanh" TextField="TenChiNhanh" ValueField="ID">
                  </PropertiesComboBox>
              </dx:GridViewDataComboBoxColumn>
          </Columns>

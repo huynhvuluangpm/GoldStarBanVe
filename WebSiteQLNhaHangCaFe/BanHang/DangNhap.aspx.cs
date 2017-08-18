@@ -27,31 +27,14 @@ namespace BanHang
                 if (dt.Rows.Count != 0)
                 {
                     DataRow dr = dt.Rows[0];
+                    Session["TenDangNhap"] = dr["TenNguoiDung"].ToString();
+                    Session["UserName"] = txtDangNhap.Value.ToUpper();
+                    Session["IDNhanVien"] = dr["ID"].ToString();
+                    Session["IDNhom"] = dr["IDNhomNguoiDung"].ToString();
+                    Session["KTDangNhap"] = "GPM@2017";
+                    Session["IDChiNhanh"] = dr["IDChiNhanh"].ToString();
+                    Response.Redirect("QuanLyNguyenLieu.aspx");
                    
-                    int IDNhom = Int32.Parse(dr["IDNhomNguoiDung"].ToString());
-                    if (IDNhom == 5)
-                    {
-                        Session["TenThuNgan"] = dr["TenNguoiDung"].ToString();
-                        Session["IDThuNgan"] = dr["ID"].ToString();
-                        Session["KTBanLe"] = "GPMBanLe";
-                        Response.Redirect("BanHangLe.aspx");
-                    }
-                    if (IDNhom != 5 && IDNhom !=4)
-                    {
-                        Session["TenDangNhap"] = dr["TenNguoiDung"].ToString();
-                        Session["UserName"] = txtDangNhap.Value.ToUpper();
-                        Session["IDNhanVien"] = dr["ID"].ToString();
-                        Session["IDNhom"] = dr["IDNhomNguoiDung"].ToString();
-                        Session["KTDangNhap"] = "GPM";
-                        Response.Redirect("Default.aspx");
-                    }
-                    if (IDNhom == 4)
-                    {
-                        Session["TenThuNgan"] = dr["TenNguoiDung"].ToString();
-                        Session["IDThuNgan"] = dr["ID"].ToString();
-                        Session["KTBanVe"] = "GPMBanVe";
-                        Response.Redirect("HeThongBanVe.aspx");
-                    }
                 }
                 else
                 {

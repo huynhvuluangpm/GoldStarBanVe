@@ -11,7 +11,7 @@
 </head>
 <body>
    <hgroup>
-  <h1>HỆ THỐNG QUẢN LÝ BÁN HÀNG</h1>
+ <h1>HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE</h1>
   <h3>Thay Đổi Mật Khẩu</h3>
 </hgroup>
     <form id="form1" runat="server" method="post">

@@ -98,6 +98,7 @@
     <Content Include="bin\BanHang.dll" />
     <Content Include="bin\BanHang.pdb" />
     <Content Include="ChiNhanh.aspx" />
+    <Content Include="ChiTietDonHang.aspx" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\GlassHeader.jpg" />
@@ -109,6 +110,7 @@
     <Content Include="DangNhap.aspx" />
     <Content Include="DangXuat.aspx" />
     <Content Include="DanhSachPhieuNhapHang.aspx" />
+    <Content Include="DanhSachPhieuXuatKhac.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DonViTinh.aspx" />
     <Content Include="images\banhang.png" />
@@ -148,6 +150,7 @@
     <Content Include="obj\Debug\BanHang.dll" />
     <Content Include="obj\Debug\banhang.dll.licenses" />
     <Content Include="obj\Debug\BanHang.pdb" />
+    <Content Include="PhieuXuatKhac.aspx" />
     <Content Include="QuanLyBan.aspx" />
     <Content Include="QuanLyGio.aspx" />
     <Content Include="QuanLyHangHoa.aspx" />
@@ -218,6 +221,13 @@
     <Compile Include="ChiNhanh.aspx.designer.cs">
       <DependentUpon>ChiNhanh.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChiTietDonHang.aspx.cs">
+      <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChiTietDonHang.aspx.designer.cs">
+      <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.aspx.cs">
       <DependentUpon>DangNhap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,9 +249,17 @@
     <Compile Include="DanhSachPhieuNhapHang.aspx.designer.cs">
       <DependentUpon>DanhSachPhieuNhapHang.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachPhieuXuatKhac.aspx.cs">
+      <DependentUpon>DanhSachPhieuXuatKhac.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachPhieuXuatKhac.aspx.designer.cs">
+      <DependentUpon>DanhSachPhieuXuatKhac.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Data\dtBan.cs" />
     <Compile Include="Data\dtCheckDangNhap.cs" />
     <Compile Include="Data\dtChiNhanh.cs" />
+    <Compile Include="Data\dtDanhSachNhapHang.cs" />
     <Compile Include="Data\dtDonViTinh.cs" />
     <Compile Include="Data\dtGio.cs" />
     <Compile Include="Data\dtHangHoa.cs" />
@@ -251,6 +269,7 @@
     <Compile Include="Data\dtNhomHangHoa.cs" />
     <Compile Include="Data\dtNhomKhachHang.cs" />
     <Compile Include="Data\dtNhomNguoiDung.cs" />
+    <Compile Include="Data\dtPhieuXuatKhac.cs" />
     <Compile Include="Data\dtQuanTriNguoiDung.cs" />
     <Compile Include="Data\dtSetting.cs" />
     <Compile Include="Data\dtThemDonHangKho.cs" />
@@ -318,6 +337,13 @@
     </Compile>
     <Compile Include="NhomNguoiDung.aspx.designer.cs">
       <DependentUpon>NhomNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuXuatKhac.aspx.cs">
+      <DependentUpon>PhieuXuatKhac.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PhieuXuatKhac.aspx.designer.cs">
+      <DependentUpon>PhieuXuatKhac.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyBan.aspx.cs">

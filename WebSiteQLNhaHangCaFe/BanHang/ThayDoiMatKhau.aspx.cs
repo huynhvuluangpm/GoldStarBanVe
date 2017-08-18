@@ -13,7 +13,7 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["KTDangNhap"] != "GPM")
+            if (Session["KTDangNhap"] != "GPM@2017")
             {
                 Response.Redirect("DangNhap.aspx");
             }
@@ -42,7 +42,7 @@ namespace BanHang
         }
         protected void btnHuy_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("QuanLyNguyenLieu.aspx");
         }
         public bool KiemTra()
         {
