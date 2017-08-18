@@ -46,13 +46,13 @@
         <SettingsSearchPanel Visible="True" />
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH PHIẾU XUẤT KHÁC" ConfirmDelete="Bạn chắc chắn muốn xóa?"/>
         <Columns>
-            <dx:GridViewDataTextColumn Caption="Ghi Chú" VisibleIndex="4" FieldName="GhiChu">
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" VisibleIndex="3" FieldName="GhiChu">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Người Lập" VisibleIndex="1" FieldName="IDNhanVien">
+            <dx:GridViewDataComboBoxColumn Caption="Người Lập" VisibleIndex="0" FieldName="IDNhanVien">
                 <PropertiesComboBox DataSourceID="SqlNhanVien" TextField="TenNguoiDung" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Lập" VisibleIndex="2" FieldName="NgayLapPhieu">
+            <dx:GridViewDataDateColumn Caption="Ngày Lập" VisibleIndex="1" FieldName="NgayLapPhieu">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                 </PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
@@ -66,8 +66,12 @@
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
             </dx:GridViewDataButtonEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Lý Do Xuất" FieldName="IDLyDoXuat" VisibleIndex="3">
+            <dx:GridViewDataComboBoxColumn Caption="Lý Do Xuất" FieldName="IDLyDoXuat" VisibleIndex="2">
                 <PropertiesComboBox DataSourceID="SqlLyDoXuat" TextField="TenTrangThai" ValueField="ID">
+                </PropertiesComboBox>
+            </dx:GridViewDataComboBoxColumn>
+            <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh Lập" FieldName="IDChiNhanh" VisibleIndex="4">
+                <PropertiesComboBox DataSourceID="SqlChNhanh" TextField="TenChiNhanh" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
         </Columns>
@@ -81,8 +85,10 @@
         </Styles>
     </dx:ASPxGridView>
 
+         <asp:SqlDataSource ID="SqlChNhanh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenChiNhanh] FROM [CF_ChiNhanh]"></asp:SqlDataSource>
+
         <asp:SqlDataSource ID="SqlLyDoXuat" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiPhieuXuatKhac]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNguoiDung] FROM [GPM_NguoiDung] WHERE ([DaXoa] = @DaXoa)">
+        <asp:SqlDataSource ID="SqlNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNguoiDung] FROM [CF_NguoiDung] WHERE ([DaXoa] = @DaXoa)">
             <SelectParameters>
                 <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
             </SelectParameters>

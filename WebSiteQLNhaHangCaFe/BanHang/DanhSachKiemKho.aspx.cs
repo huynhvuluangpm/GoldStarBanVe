@@ -8,19 +8,18 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class DanhSachPhieuXuatKhac : System.Web.UI.Page
+    public partial class DanhSachKiemKho : System.Web.UI.Page
     {
-        dtPhieuXuatKhac data = new dtPhieuXuatKhac();
+        dtKiemKho data = new dtKiemKho();
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadGrid();
         }
-
         private void LoadGrid()
         {
-            data = new dtPhieuXuatKhac();
-            gridPhieuXuatKhac.DataSource = data.DanhSachPhieuXuatKhac();
-            gridPhieuXuatKhac.DataBind();
+            data = new dtKiemKho();
+            gridDanhSachKiemKho.DataSource = data.DanhSachKiemKho();
+            gridDanhSachKiemKho.DataBind();
         }
     }
 }

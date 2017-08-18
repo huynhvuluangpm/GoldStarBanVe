@@ -7,7 +7,7 @@
                     <dx:LayoutItem Caption="Người Lập Phiếu">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                                <dx:ASPxTextBox ID="txtNguoiLapPhieu" runat="server" Enabled="False">
+                                <dx:ASPxTextBox ID="txtNguoiLapPhieu" runat="server" Enabled="False" Width="100%">
                                 </dx:ASPxTextBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -32,7 +32,7 @@
                     <dx:LayoutItem Caption="Chi Nhánh Lập">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" DataSourceID="SqlChiNhanh" Enabled="False" TextField="TenChiNhanh" ValueField="ID">
+                                <dx:ASPxComboBox ID="cmbChiNhanh" runat="server"  Width="100%" DataSourceID="SqlChiNhanh" Enabled="False" TextField="TenChiNhanh" ValueField="ID">
                                 </dx:ASPxComboBox>
                                 <asp:SqlDataSource ID="SqlChiNhanh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenChiNhanh] FROM [CF_ChiNhanh]"></asp:SqlDataSource>
                             </dx:LayoutItemNestedControlContainer>
@@ -156,14 +156,14 @@
                                  </SettingsPopup>
                                 <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
                                 <Columns>
-                                    <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="6">
+                                    <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="7">
                                     </dx:GridViewCommandColumn>
                                     <dx:GridViewDataTextColumn Caption="Mã Nguyên Liệu" FieldName="MaNguyenLieu" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                     </dx:GridViewDataTextColumn>
-<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Đơn Giá" VisibleIndex="4" ReadOnly="True">
+<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Đơn Giá" VisibleIndex="5" ReadOnly="True">
 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Số Lượng (g)" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="3">
+                                    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Xuất (g)" FieldName="SoLuongXuat" ShowInCustomizationForm="True" VisibleIndex="4">
 <PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataComboBoxColumn Caption="Tên Nguyên Liệu" FieldName="IDNguyenLieu" ShowInCustomizationForm="True" VisibleIndex="1" ReadOnly="True">
@@ -175,7 +175,10 @@
                                         </PropertiesComboBox>
                                     </dx:GridViewDataComboBoxColumn>
 
-                                    <dx:GridViewDataTextColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="5">
+                                    <dx:GridViewDataTextColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="6">
+                                    </dx:GridViewDataTextColumn>
+
+                                    <dx:GridViewDataTextColumn Caption="Tồn Kho Hiện Tại" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="3">
                                     </dx:GridViewDataTextColumn>
 
                                 </Columns>

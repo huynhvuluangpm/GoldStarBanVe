@@ -13,34 +13,35 @@ namespace BanHang.Data
 {
     public class dtSetting
     {
-        //public static void CapNhatKho(string IDHangHoa, string SoLuongMoi)
-        //{
-        //    using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
-        //    {
-        //        try
-        //        {
-        //            myConnection.Open();
-        //            string cmdText = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = @SoLuongMoi, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa ";
-        //            using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-        //            {
-        //                myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-        //                myCommand.Parameters.AddWithValue("@SoLuongMoi", SoLuongMoi);
-        //                myCommand.ExecuteNonQuery();
-        //            }
-        //            myConnection.Close();
-        //        }
-        //        catch
-        //        {
-        //            throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
-        //        }
-        //    }
-        //}
-        public static int SoLuong_TonKho(string IDNguyenLieu)
+        public static void CapNhatKho(string IDNguyenLieu, string TrongLuong, string IDChiNhanh)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [CF_TonKho] SET [TrongLuong] = @TrongLuong WHERE [IDNguyenLieu] = @IDNguyenLieu AND [IDChiNhanh] = @IDChiNhanh";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDNguyenLieu", IDNguyenLieu);
+                        myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
+                        myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public static float SoLuong_TonKho(string IDNguyenLieu,string IDChiNhanh)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT TrongLuong FROM [CF_TonKho] WHERE [IDNguyenLieu] = '" + IDNguyenLieu + "'";
+                string cmdText = " SELECT TrongLuong FROM [CF_TonKho] WHERE [IDNguyenLieu] = '" + IDNguyenLieu + "' AND [IDChiNhanh] = '" + IDChiNhanh + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -49,35 +50,35 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["TrongLuong"].ToString());
+                        return float.Parse(dr["TrongLuong"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
-        //public static void TruTonKho(string IDHangHoa, string SoLuongCon)
-        //{
-        //    using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
-        //    {
-        //        try
-        //        {
-        //            myConnection.Open();
-        //            string cmdText = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] - @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa";
-        //            using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-        //            {
-        //                myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-        //                myCommand.Parameters.AddWithValue("@SoLuongCon", SoLuongCon);
-
-        //                myCommand.ExecuteNonQuery();
-        //            }
-        //            myConnection.Close();
-        //        }
-        //        catch
-        //        {
-        //            throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
-        //        }
-        //    }
-        //}
+        public static void TruTonKho(string IDNguyenLieu, string TrongLuong, string IDChiNhanh)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [CF_TonKho] SET [TrongLuong] = [TrongLuong] - @TrongLuong WHERE [IDNguyenLieu] = @IDNguyenLieu AND [IDChiNhanh] = @IDChiNhanh";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDNguyenLieu", IDNguyenLieu);
+                        myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
+                        myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
         public static void CongTonKho(string IDNguyenLieu, string TrongLuong, string IDChiNhanh)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

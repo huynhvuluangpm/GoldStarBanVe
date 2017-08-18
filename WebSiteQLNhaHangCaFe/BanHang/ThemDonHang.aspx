@@ -36,7 +36,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Chi Nhánh Lập">
+                <dx:LayoutItem Caption="Chi Nhánh Lập" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                             <dx:ASPxComboBox ID="cmbKhoLap" runat="server" Enabled="False" Width="100%" DataSourceID="SqlKho" TextField="TenChiNhanh" ValueField="ID">
@@ -49,9 +49,30 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ghi Chú">
+                <dx:LayoutItem Caption="Nhà Cung Cấp" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
+                            <dx:ASPxComboBox ID="cmbNhaCungCap" runat="server" Width="100%" AutoPostBack="True" DataSourceID="SqlNhaCungCap" OnSelectedIndexChanged="cmbNhaCungCap_SelectedIndexChanged" TextField="TenNhaCungCap" ValueField="ID">
+                            </dx:ASPxComboBox>
+                            <asp:SqlDataSource ID="SqlNhaCungCap" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNhaCungCap] FROM [CF_NhaCungCap] WHERE ([DaXoa] = @DaXoa)">
+                                <SelectParameters>
+                                    <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Đã Thanh Toán">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxCheckBox ID="ckThanhToan" runat="server" CheckState="Unchecked" Enabled="False">
+                            </dx:ASPxCheckBox>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Ghi Chú" ColSpan="3">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">
                             </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>

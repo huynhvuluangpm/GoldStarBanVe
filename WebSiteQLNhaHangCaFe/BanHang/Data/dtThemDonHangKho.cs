@@ -56,7 +56,29 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTien, string GhiChu, string IDChiNhanh)
+        public void CongCongNoNCC(string ID, string CongNo)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [CF_NhaCungCap] SET [CongNo] = [CongNo] + @CongNo WHERE ID = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@CongNo", CongNo);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTien, string GhiChu, string IDChiNhanh, string IDNhaCungCap, int TrangThaiCongNo)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -64,15 +86,16 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
 
-                    string cmdText = "UPDATE [CF_DonDatHang] SET [IDChiNhanh] = @IDChiNhanh, [SoDonHang] = @SoDonHang, [IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTien] = @TongTien,[GhiChu] = @GhiChu WHERE ID = @ID";
+                    string cmdText = "UPDATE [CF_DonDatHang] SET [TrangThaiCongNo] = @TrangThaiCongNo,[IDNhaCungCap] = @IDNhaCungCap,[IDChiNhanh] = @IDChiNhanh, [SoDonHang] = @SoDonHang, [IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTien] = @TongTien,[GhiChu] = @GhiChu WHERE ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@TrangThaiCongNo", TrangThaiCongNo);
+                        myCommand.Parameters.AddWithValue("@IDNhaCungCap", IDNhaCungCap);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
                         myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
                         myCommand.Parameters.AddWithValue("@IDNguoiLap", IDNguoiLap);
                         myCommand.Parameters.AddWithValue("@NgayLap", NgayLap);
-
                         myCommand.Parameters.AddWithValue("@TongTien", TongTien);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.ExecuteNonQuery();

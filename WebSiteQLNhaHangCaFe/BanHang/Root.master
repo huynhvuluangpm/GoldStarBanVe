@@ -52,6 +52,8 @@
                                                     <dx:RibbonDropDownButtonItem Name="Danh mục" NavigateUrl="javascript:void(2)" 
                                                         Size="Large" Text="Danh mục">
                                                         <Items>
+                                                            <dx:RibbonDropDownButtonItem Name="Nhà Cung Cấp" NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp">
+                                                            </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don_vi_tinh">
                                                                 <SmallImage IconID="businessobjects_bodepartment_16x16">
                                                                 </SmallImage>
@@ -63,7 +65,7 @@
                                                             <dx:RibbonDropDownButtonItem Name="khach_hang" NavigateUrl="KhachHang.aspx" 
                                                                 Text="Khách Hàng">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Quản Lý Giờ" Text="Quản Lý Giờ" NavigateUrl="QuanLyGio.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="Quản Lý Giờ" Text="Tỷ Lệ Giá Bán Theo Giờ" NavigateUrl="QuanLyGio.aspx">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Quản Lý Khu Vực" NavigateUrl="QuanLyKhuVuc.aspx" Text="Quản Lý Khu Vực">
                                                             </dx:RibbonDropDownButtonItem>
@@ -88,11 +90,13 @@
                                                     <dx:RibbonDropDownButtonItem Name="Nhập xuất tồn" Size="Large" 
                                                         Text="Nhập xuất tồn">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="ton_kho_ban_dau" Text="Tồn kho" NavigateUrl="TonKhoBanDau.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="ton_kho_ban_dau" Text="Tồn Kho" NavigateUrl="TonKhoBanDau.aspx">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Cập Nhật Công Nợ NCC" NavigateUrl="CapNhatCongNo.aspx" Text="Cập Nhật Công Nợ NCC">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Phiếu Nhập Hàng" Text="Phiếu Nhập Hàng" NavigateUrl="DanhSachPhieuNhapHang.aspx">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Phiếu xuất khác" Text="Phiếu xuất khác" NavigateUrl="DanhSachPhieuXuatKhac.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="Phiếu xuất khác" Text="Phiếu Xuất Khác" NavigateUrl="DanhSachPhieuXuatKhac.aspx">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Kiểm Kho" NavigateUrl="DanhSachKiemKho.aspx" Text="Kiểm Kho">
                                                                 <LargeImage IconID="actions_apply_16x16">

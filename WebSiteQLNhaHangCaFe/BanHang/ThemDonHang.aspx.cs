@@ -233,8 +233,20 @@ namespace BanHang
                 string TongTien = txtTongTien.Text;
                 string IDChiNhanh = Session["IDChiNhanh"].ToString();
                 string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                string IDNhaCungCap = cmbNhaCungCap.Text ==  "" ? "" : cmbNhaCungCap.Value.ToString();
+                int TrangThai = 0;
+                if (ckThanhToan.Checked == true)
+                {
+                    TrangThai = 1;
+                }
+                if(cmbNhaCungCap.Text != "" && ckThanhToan.Checked == false)
+                {
+                    data = new dtThemDonHangKho();
+                    data.CongCongNoNCC(IDNhaCungCap, TongTien);
+
+                }
                 data = new dtThemDonHangKho();
-                data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTien, GhiChu, IDChiNhanh);
+                data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTien, GhiChu, IDChiNhanh, IDNhaCungCap, TrangThai);
                 foreach (DataRow dr in dt.Rows)
                 {
                     string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
@@ -316,7 +328,7 @@ namespace BanHang
         {
             if (cmbHangHoa.Text != "")
             {
-                txtTonKho.Text = dtSetting.SoLuong_TonKho(cmbHangHoa.Value.ToString()) + "";
+                txtTonKho.Text = dtSetting.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDChiNhanh"].ToString()) + "";
                 txtDonGia.Text = dtSetting.GiaMua(cmbHangHoa.Value.ToString()) + "";
                 txtSoLuong.Text = "0";
             }
@@ -328,5 +340,13 @@ namespace BanHang
         }
 
         public string strFileExcel { get; set; }
+
+        protected void cmbNhaCungCap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNhaCungCap.Text != "")
+            {
+                ckThanhToan.Enabled = true;
+            }
+        }
     }
 }

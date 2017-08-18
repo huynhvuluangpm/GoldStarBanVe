@@ -18,10 +18,10 @@ namespace BanHang
             if (!IsPostBack)
             {
                 data = new dtPhieuXuatKhac();
-                //object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
-               // IDPhieuXuatKhac_Temp.Value = IDPhieuXuatKhac.ToString();
+                object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
+                IDPhieuXuatKhac_Temp.Value = IDPhieuXuatKhac.ToString();
+                cmbChiNhanh.Text = Session["IDChiNhanh"].ToString();
                 txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
-               
             }
             LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());  
         }
@@ -41,9 +41,8 @@ namespace BanHang
         private void LoadGrid(string IDPhieuXuatKhac)
         {
             data = new dtPhieuXuatKhac();
-            //gridDanhSachHangHoa_Temp.DataSource = data.LayDanhSachPhieuXuatKhac_Temp(IDPhieuXuatKhac);
-          //  gridDanhSachHangHoa_Temp.DataBind();
-
+            gridDanhSachHangHoa.DataSource = data.LayDanhSachPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+            gridDanhSachHangHoa.DataBind();
         }
 
         protected void cmbHangHoa_ItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
@@ -87,7 +86,7 @@ namespace BanHang
         {
             if (cmbHangHoa.Text != "")
             {
-                txtTonKho.Text = dtSetting.SoLuong_TonKho(cmbHangHoa.Value.ToString()) + "";
+                txtTonKho.Text = dtSetting.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDChiNhanh"].ToString()) + "";
                 cmbDonViTinh.Value = dtThemHangHoa.LayIDDonViTinh(cmbHangHoa.Value.ToString());
                 txtSoLuong.Text = "0";
             }
@@ -95,23 +94,106 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-
+            if (cmbHangHoa.Value != null && txtSoLuong.Text != "")
+            {
+                float SoLuong = float.Parse(txtSoLuong.Value.ToString());
+                if (SoLuong > 0)
+                {
+                    string IDNguyenLieu = cmbHangHoa.Value.ToString();
+                    string IDPhieuXuatKhac = IDPhieuXuatKhac_Temp.Value.ToString();
+                    DataTable db = data.KTChiTietPhieuXuatKhac_Temp(IDNguyenLieu, IDPhieuXuatKhac);// kiểm tra hàng hóa
+                    if (db.Rows.Count == 0)
+                    {
+                        data = new dtPhieuXuatKhac();
+                        data.ThemPhieuXuatKhac_Temp1(IDPhieuXuatKhac,IDNguyenLieu,txtTonKho.Text,dtThemHangHoa.LayIDDonViTinh(IDNguyenLieu),txtSoLuong.Text,dtThemHangHoa.LayMaNguyenLieu(IDNguyenLieu),dtSetting.GiaMua(IDNguyenLieu).ToString());
+                        Clear();
+                    }
+                    else
+                    {
+                        data = new dtPhieuXuatKhac();
+                        data.UpdatePhieuXuatKhac_temp(IDPhieuXuatKhac, IDNguyenLieu, SoLuong.ToString());
+                        Clear();
+                    }
+                    LoadGrid(IDPhieuXuatKhac);
+                }
+                else
+                {
+                    txtSoLuong.Focus();
+                    Response.Write("<script language='JavaScript'> alert('Số Lượng phải > 0.'); </script>");
+                }
+            }
+            else
+            {
+                cmbHangHoa.Focus();
+                Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn nguyên liệu.'); </script>");
+            }
         }
 
         protected void btnThemPhieuXuatKhac_Click(object sender, EventArgs e)
         {
-
+            if (cmbLyDoXuat.Text != "")
+            {
+                string IDPhieuXuatKhac = IDPhieuXuatKhac_Temp.Value.ToString();
+                DataTable db = data.LayDanhSachPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+                if (db.Rows.Count != 0)
+                {
+                    string IDNguoiLapPhieu = Session["IDNhanVien"].ToString();
+                    DateTime NgayLapPhieu = DateTime.Parse(cmbNgayLapPhieu.Text.ToString());
+                    string IDLyDoXuat = cmbLyDoXuat.Value.ToString();
+                    string GhiChu = txtGhiChu == null ? "" : txtGhiChu.Text.ToString();
+                    string IDChiNhanh = Session["IDChiNhanh"].ToString();
+                    data = new dtPhieuXuatKhac();
+                    data.CapNhatPhieuXuatKhac_ID(IDPhieuXuatKhac, IDNguoiLapPhieu, IDLyDoXuat, NgayLapPhieu, GhiChu, IDChiNhanh);
+                    foreach (DataRow dr in db.Rows)
+                    {
+                        string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
+                        string TonKho = dr["TonKho"].ToString();
+                        string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                        string SoLuongXuat = dr["SoLuongXuat"].ToString();
+                        string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
+                        string DonGia = dr["DonGia"].ToString();
+                        string ThanhTien = dr["ThanhTien"].ToString();
+                        data = new dtPhieuXuatKhac();
+                        data.ThemChiTietPhieuXuatKhac(IDPhieuXuatKhac, IDNguyenLieu, TonKho, IDDonViTinh, SoLuongXuat, MaNguyenLieu, DonGia, ThanhTien);
+                        dtSetting.TruTonKho(IDNguyenLieu, SoLuongXuat, IDChiNhanh);
+                    }
+                    data = new dtPhieuXuatKhac();
+                    data.XoaChiTietPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+                    Response.Redirect("DanhSachPhieuXuatKhac.aspx");
+                }
+                else
+                {
+                    cmbHangHoa.Focus();
+                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa rỗng.'); </script>");
+                }
+            }
+            else
+            {
+                cmbLyDoXuat.Focus();
+                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn lý do để xuất.'); </script>");
+            }
         }
 
         protected void btnHuyPhieuXuatKhac_Click(object sender, EventArgs e)
         {
-
+            data = new dtPhieuXuatKhac();
+            int ID = Int32.Parse(IDPhieuXuatKhac_Temp.Value.ToString());
+            if (ID != null)
+            {
+                data.XoaPhieuXuatKhac_Temp(ID);
+                data.XoaChiTietPhieuXuatKhac_Temp(IDPhieuXuatKhac_Temp.Value.ToString());
+                Response.Redirect("DanhSachPhieuXuatKhac.aspx");
+            }
         }
 
         protected void gridDanhSachHangHoa_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-
+            int ID = Int32.Parse(e.Keys[0].ToString());
+            data = new dtPhieuXuatKhac();
+            data.XoaChiTietPhieuXuatKhac_Temp_ID(ID);
+            e.Cancel = true;
+            gridDanhSachHangHoa.CancelEdit();
+            LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());
         }
-
     }
 }

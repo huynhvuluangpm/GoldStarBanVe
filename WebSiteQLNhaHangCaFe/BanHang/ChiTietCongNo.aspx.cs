@@ -8,9 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class DanhSachPhieuXuatKhac : System.Web.UI.Page
+    public partial class ChiTietCongNo : System.Web.UI.Page
     {
-        dtPhieuXuatKhac data = new dtPhieuXuatKhac();
+        dtCongNo data = new dtCongNo();
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadGrid();
@@ -18,9 +18,9 @@ namespace BanHang
 
         private void LoadGrid()
         {
-            data = new dtPhieuXuatKhac();
-            gridPhieuXuatKhac.DataSource = data.DanhSachPhieuXuatKhac();
-            gridPhieuXuatKhac.DataBind();
+            data = new dtCongNo();
+            gridDanhSach.DataSource = data.DanhSachChiTietCongNo();
+            gridDanhSach.DataBind();
         }
     }
 }

@@ -97,8 +97,12 @@
     </Content>
     <Content Include="bin\BanHang.dll" />
     <Content Include="bin\BanHang.pdb" />
+    <Content Include="CapNhatCongNo.aspx" />
     <Content Include="ChiNhanh.aspx" />
+    <Content Include="ChiTietCongNo.aspx" />
     <Content Include="ChiTietDonHang.aspx" />
+    <Content Include="ChiTietPhieuKiemKho.aspx" />
+    <Content Include="ChiTietPhieuXuatKhac.aspx" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\GlassHeader.jpg" />
@@ -109,6 +113,7 @@
     <Content Include="css\style.css" />
     <Content Include="DangNhap.aspx" />
     <Content Include="DangXuat.aspx" />
+    <Content Include="DanhSachKiemKho.aspx" />
     <Content Include="DanhSachPhieuNhapHang.aspx" />
     <Content Include="DanhSachPhieuXuatKhac.aspx" />
     <Content Include="Default.aspx" />
@@ -138,12 +143,14 @@
     <Content Include="image\trangchu.png" />
     <Content Include="ImportExcel_KhachHang.aspx" />
     <Content Include="KhachHang.aspx" />
+    <Content Include="KiemKho.aspx" />
     <Content Include="Light.master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NhaCungCap.aspx" />
     <Content Include="NhomKhachHang.aspx" />
     <Content Include="NhomNguoiDung.aspx" />
     <Content Include="obj\Debug\BanHang.csproj.FileListAbsolute.txt" />
@@ -214,6 +221,13 @@
     <Compile Include="Account\RegisterSuccess.aspx.designer.cs">
       <DependentUpon>RegisterSuccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CapNhatCongNo.aspx.cs">
+      <DependentUpon>CapNhatCongNo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CapNhatCongNo.aspx.designer.cs">
+      <DependentUpon>CapNhatCongNo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChiNhanh.aspx.cs">
       <DependentUpon>ChiNhanh.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,12 +235,33 @@
     <Compile Include="ChiNhanh.aspx.designer.cs">
       <DependentUpon>ChiNhanh.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChiTietCongNo.aspx.cs">
+      <DependentUpon>ChiTietCongNo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChiTietCongNo.aspx.designer.cs">
+      <DependentUpon>ChiTietCongNo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChiTietDonHang.aspx.cs">
       <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChiTietDonHang.aspx.designer.cs">
       <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTietPhieuKiemKho.aspx.cs">
+      <DependentUpon>ChiTietPhieuKiemKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChiTietPhieuKiemKho.aspx.designer.cs">
+      <DependentUpon>ChiTietPhieuKiemKho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTietPhieuXuatKhac.aspx.cs">
+      <DependentUpon>ChiTietPhieuXuatKhac.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChiTietPhieuXuatKhac.aspx.designer.cs">
+      <DependentUpon>ChiTietPhieuXuatKhac.aspx</DependentUpon>
     </Compile>
     <Compile Include="DangNhap.aspx.cs">
       <DependentUpon>DangNhap.aspx</DependentUpon>
@@ -241,6 +276,13 @@
     </Compile>
     <Compile Include="DangXuat.aspx.designer.cs">
       <DependentUpon>DangXuat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachKiemKho.aspx.cs">
+      <DependentUpon>DanhSachKiemKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachKiemKho.aspx.designer.cs">
+      <DependentUpon>DanhSachKiemKho.aspx</DependentUpon>
     </Compile>
     <Compile Include="DanhSachPhieuNhapHang.aspx.cs">
       <DependentUpon>DanhSachPhieuNhapHang.aspx</DependentUpon>
@@ -259,13 +301,16 @@
     <Compile Include="Data\dtBan.cs" />
     <Compile Include="Data\dtCheckDangNhap.cs" />
     <Compile Include="Data\dtChiNhanh.cs" />
+    <Compile Include="Data\dtCongNo.cs" />
     <Compile Include="Data\dtDanhSachNhapHang.cs" />
     <Compile Include="Data\dtDonViTinh.cs" />
     <Compile Include="Data\dtGio.cs" />
     <Compile Include="Data\dtHangHoa.cs" />
     <Compile Include="Data\dtKhachHang.cs" />
     <Compile Include="Data\dtKhuVuc.cs" />
+    <Compile Include="Data\dtKiemKho.cs" />
     <Compile Include="Data\dtNguyenLieu.cs" />
+    <Compile Include="Data\dtNhaCungCap.cs" />
     <Compile Include="Data\dtNhomHangHoa.cs" />
     <Compile Include="Data\dtNhomKhachHang.cs" />
     <Compile Include="Data\dtNhomNguoiDung.cs" />
@@ -310,6 +355,13 @@
     <Compile Include="KhachHang.aspx.designer.cs">
       <DependentUpon>KhachHang.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KiemKho.aspx.cs">
+      <DependentUpon>KiemKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KiemKho.aspx.designer.cs">
+      <DependentUpon>KiemKho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Light.master.cs">
       <DependentUpon>Light.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +375,13 @@
     </Compile>
     <Compile Include="Main.master.designer.cs">
       <DependentUpon>Main.master</DependentUpon>
+    </Compile>
+    <Compile Include="NhaCungCap.aspx.cs">
+      <DependentUpon>NhaCungCap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NhaCungCap.aspx.designer.cs">
+      <DependentUpon>NhaCungCap.aspx</DependentUpon>
     </Compile>
     <Compile Include="NhomKhachHang.aspx.cs">
       <DependentUpon>NhomKhachHang.aspx</DependentUpon>
