@@ -1,5 +1,0 @@
-D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DTO\bin\Debug\DTO.dll
-D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DTO\bin\Debug\DTO.pdb
-D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
-D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DTO\obj\Debug\DTO.dll
-D:\GPM\GoldStarBanVe\GoldStarBanVe\QLNhaHangCaFe\DTO\obj\Debug\DTO.pdb
