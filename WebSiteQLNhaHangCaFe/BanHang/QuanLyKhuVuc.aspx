@@ -38,6 +38,8 @@
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH KHU VỰC" />
         <EditFormLayoutProperties>
             <Items>
+                <dx:GridViewColumnLayoutItem ColumnName="Ký Hiệu">
+                </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Tên Khu Vực" Name="TenDonViTinh">
                 </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Tỷ Lệ (%)">
@@ -51,7 +53,7 @@
             </Items>
         </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="6" Name="iconaction">
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="7" Name="iconaction">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn Caption="Mã Khu Vực" FieldName="MaKhuVuc" VisibleIndex="0" ReadOnly="True">
                 <PropertiesTextEdit>
@@ -61,7 +63,7 @@
                 </PropertiesTextEdit>
                 <Settings AutoFilterCondition="Contains" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Tên Khu Vực" FieldName="TenKhuVuc" VisibleIndex="1">
+            <dx:GridViewDataTextColumn Caption="Tên Khu Vực" FieldName="TenKhuVuc" VisibleIndex="2">
                 <PropertiesTextEdit>
                     
                     <ValidationSettings SetFocusOnError="True">
@@ -73,25 +75,32 @@
                 </PropertiesTextEdit>
                 <Settings AutoFilterCondition="Contains" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="5">
+            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="6">
                 <propertiesdateedit displayformatstring="dd/MM/yyyy"></propertiesdateedit>
                 <settings autofiltercondition="Contains" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ (%)" FieldName="TyLe" VisibleIndex="2">
+            <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ (%)" FieldName="TyLe" VisibleIndex="3">
                 <PropertiesSpinEdit DisplayFormatString="g">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDChiNhanh" VisibleIndex="4">
+            <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDChiNhanh" VisibleIndex="5">
                 <PropertiesComboBox DataSourceID="SqlChiNhanh" TextField="TenChiNhanh" ValueField="ID">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="3">
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn Caption="Ký Hiệu" FieldName="KyHieu" VisibleIndex="1">
+                <PropertiesTextEdit>
+                    <ValidationSettings SetFocusOnError="True">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
+                </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
         </Columns>
         <Styles>

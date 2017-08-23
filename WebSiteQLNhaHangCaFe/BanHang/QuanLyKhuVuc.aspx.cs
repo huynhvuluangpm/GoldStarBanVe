@@ -28,11 +28,12 @@ namespace BanHang
         {
             string ID = e.Keys[0].ToString();
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
+            string KyHieu = e.NewValues["KyHieu"].ToString();
             string TyLe = e.NewValues["TyLe"].ToString();
             string IDChiNhanh = e.NewValues["IDChiNhanh"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             data = new dtKhuVuc();
-            data.Sua(ID, GhiChu, TenKhuVuc, TyLe, IDChiNhanh);
+            data.Sua(ID, GhiChu, TenKhuVuc, TyLe, IDChiNhanh, KyHieu);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -44,9 +45,10 @@ namespace BanHang
             string MaKhuVuc = dtKhuVuc.Dem_Max(IDChiNhanh);
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
             string TyLe = e.NewValues["TyLe"].ToString();
+            string KyHieu = e.NewValues["KyHieu"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             data = new dtKhuVuc();
-            data.Them(MaKhuVuc, TenKhuVuc, TyLe, IDChiNhanh, GhiChu);
+            data.Them(MaKhuVuc, TenKhuVuc, TyLe, IDChiNhanh, GhiChu, KyHieu);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
