@@ -51,6 +51,11 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_Ban] SET [TrangThai] = 1 WHERE ID = {0}", idban);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
+        public static bool DoiTrangThaiBanCoNguoi(int idban)
+        {
+            string sTruyVan = string.Format(@"UPDATE [CF_Ban] SET [TrangThai] = 2 WHERE ID = {0}", idban);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static bool XoaBanVeMatDinh(int idban)
         {
             string sTruyVan = string.Format(@"UPDATE [CF_Ban] SET [TrangThai] = 0 WHERE ID = {0}", idban);
@@ -60,6 +65,33 @@ namespace QLCafe.DAO
         {
             string sTruyVan = string.Format(@"INSERT INTO CF_DatBan(TenKhachHang,DienThoai,GioDat,IDBan) VALUES (N'{0}',N'{1}','{2}','{3}')", TenKhachHang, DienThoai, GioDat, idban);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+        public static int TrangThaiBan(int IDBan)
+        {
+            string sTruyVan = string.Format(@"SELECT TrangThai FROM [CF_Ban] WHERE ID = {0}", IDBan);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["TrangThai"].ToString());
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        public static int LayIDKhuVuc(int IDBan)
+        {
+            string sTruyVan = string.Format(@"SELECT IDKhuVuc FROM [CF_Ban] WHERE [ID] = {0} ", IDBan);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["IDKhuVuc"].ToString());
+            }
+            return -1;
         }
     }
 }

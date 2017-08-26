@@ -42,9 +42,9 @@
                 </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Thời Gian Bắt Đầu" Name="GioBatDau">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Thời Gian Kết Thúc" Name="GioKetThuc">
+                <dx:GridViewColumnLayoutItem ColumnName="Thời Gian Kết Thúc" Name="GioKetThuc" >
                 </dx:GridViewColumnLayoutItem>
-                <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
+                <dx:EditModeCommandLayoutItem HorizontalAlign="Right" >
                 </dx:EditModeCommandLayoutItem>
             </Items>
         </EditFormLayoutProperties>
@@ -54,21 +54,6 @@
             <dx:GridViewDataTextColumn Caption="Mã" FieldName="MaGio" VisibleIndex="0">
                 <Settings AutoFilterCondition="Contains" />
             </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTimeEditColumn Caption="Thời Gian Bắt Đầu" FieldName="GioBatDau" VisibleIndex="1">
-                 <PropertiesTimeEdit DisplayFormatString="HH:mm tt">
-                     <ValidationSettings SetFocusOnError="True">
-                         <RequiredField IsRequired="True" />
-                     </ValidationSettings>
-                 </PropertiesTimeEdit>
-                 <Settings ShowFilterRowMenu="True" />
-             </dx:GridViewDataTimeEditColumn>
-             <dx:GridViewDataTimeEditColumn Caption="Thời Gian Kết Thúc" FieldName="GioKetThuc" VisibleIndex="2">
-                 <PropertiesTimeEdit DisplayFormatString="HH:mm tt">
-                     <ValidationSettings SetFocusOnError="True">
-                         <RequiredField IsRequired="True" />
-                     </ValidationSettings>
-                 </PropertiesTimeEdit>
-             </dx:GridViewDataTimeEditColumn>
              <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="4">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormat="DateTime">
                  </PropertiesDateEdit>
@@ -82,6 +67,21 @@
                  </PropertiesSpinEdit>
                  <Settings AutoFilterCondition="Contains" />
              </dx:GridViewDataSpinEditColumn>
+             <dx:GridViewDataTimeEditColumn Caption="Thời Gian Bắt Đầu" FieldName="GioBatDau" VisibleIndex="1">
+                 <PropertiesTimeEdit DisplayFormatString="" EditFormat="Custom" EditFormatString="HH:mm:ss">
+                     <ValidationSettings SetFocusOnError="True">
+                         <RequiredField IsRequired="True" />
+                     </ValidationSettings>
+                 </PropertiesTimeEdit>
+                 <Settings ShowFilterRowMenu="True" />
+             </dx:GridViewDataTimeEditColumn>
+             <dx:GridViewDataTimeEditColumn Caption="Thời Gian Kết Thúc" FieldName="GioKetThuc" VisibleIndex="2" >
+                 <PropertiesTimeEdit DisplayFormatString="" EditFormat="Custom" EditFormatString="HH:mm:ss">
+                     <ValidationSettings SetFocusOnError="True">
+                         <RequiredField IsRequired="True" />
+                     </ValidationSettings>
+                 </PropertiesTimeEdit>
+             </dx:GridViewDataTimeEditColumn>
         </Columns>
 
         <Styles>

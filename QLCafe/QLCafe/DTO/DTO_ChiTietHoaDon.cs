@@ -51,7 +51,53 @@ namespace QLCafe.DTO
             get { return thanhTien; }
             set { thanhTien = value; }
         }
-        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien)
+        private string maHangHoa;
+
+        public string MaHangHoa
+        {
+            get { return maHangHoa; }
+            set { maHangHoa = value; }
+        }
+        private int iDDonViTinh;
+
+        public int IDDonViTinh
+        {
+            get { return iDDonViTinh; }
+            set { iDDonViTinh = value; }
+        }
+        private int idBan;
+
+        public int IdBan
+        {
+            get { return idBan; }
+            set { idBan = value; }
+        }
+
+
+        private float phuThuGio;
+
+        public float PhuThuGio
+        {
+            get { return phuThuGio; }
+            set { phuThuGio = value; }
+        }
+        private float phuThuKhuVuc;
+
+        public float PhuThuKhuVuc
+        {
+            get { return phuThuKhuVuc; }
+            set { phuThuKhuVuc = value; }
+        }
+        private float giaTong;
+
+        public float GiaTong
+        {
+            get { return giaTong; }
+            set { giaTong = value; }
+        }
+
+        public DTO_ChiTietHoaDon() { }
+        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien,string getMaHangHoa, int getiddvt,int getidban,float getgio, float getkhuvuc, float giatong)
         {
             this.ID = getid;
             this.IDHoaDon = getidhoadon;
@@ -59,15 +105,28 @@ namespace QLCafe.DTO
             this.SoLuong = getsoluong;
             this.DonGia = getdongia;
             this.ThanhTien = getthanhtien;
+            this.MaHangHoa = getMaHangHoa;
+            this.IDDonViTinh = getiddvt;
+            this.IdBan = getidban;
+            this.PhuThuGio = getgio;
+            this.PhuThuKhuVuc = getkhuvuc;
+            this.GiaTong = giatong;
         }
         public DTO_ChiTietHoaDon(DataRow dr)
         {
             this.ID = (int)dr["ID"];
-            this.IDHoaDon = (int)dr["IDHoaDon"];
-            this.IDHangHoa = (int)dr["IDHangHoa"];
-            this.SoLuong = (int)dr["SoLuong"];
-            this.DonGia = (float)dr["DonGia"];
-            this.ThanhTien = (float)dr["ThanhTien"];
+            this.IDHoaDon = Int32.Parse(dr["IDHoaDon"].ToString()) ;
+            this.IDHangHoa = Int32.Parse(dr["IDHangHoa"].ToString());
+            this.SoLuong = Int32.Parse(dr["SoLuong"].ToString());
+            this.DonGia = float.Parse(dr["DonGia"].ToString());
+            this.ThanhTien = float.Parse(dr["ThanhTien"].ToString());
+            this.MaHangHoa = dr["MaHangHoa"].ToString();
+            this.IDDonViTinh = Int32.Parse(dr["IDDonViTinh"].ToString());
+            this.IdBan = Int32.Parse(dr["IDBan"].ToString());
+
+            this.PhuThuGio = float.Parse(dr["PhuThuGio"].ToString());
+            this.PhuThuKhuVuc = float.Parse(dr["PhuThuKhuVuc"].ToString());
+            this.GiaTong = float.Parse(dr["GiaTong"].ToString());
         }
     }
 }

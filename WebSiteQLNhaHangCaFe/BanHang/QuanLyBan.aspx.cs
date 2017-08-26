@@ -46,14 +46,7 @@ namespace BanHang
             string IDKhuVuc = e.NewValues["IDKhuVuc"].ToString();
             string MaBan = dtBan.Dem_Max(IDKhuVuc);
             data = new dtBan();
-            if (dtBan.KTTenBan_IDKhuVuc(dtBan.LayKyHieuKhuVuc(IDKhuVuc) + " - " + TenBan, IDKhuVuc) == true)
-            {
-                data.Them(MaBan, dtBan.LayKyHieuKhuVuc(IDKhuVuc) + " - " + TenBan, IDKhuVuc, dtBan.IDChiNhanh(IDKhuVuc));
-            }
-            else
-            {
-                throw new Exception("Lỗi: Tên bàn đã tồn tại trong khu vực");
-            }
+            data.Them(MaBan, TenBan, IDKhuVuc);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -65,47 +58,10 @@ namespace BanHang
             string TenBan = e.NewValues["TenBan"].ToString();
             string IDKhuVuc = e.NewValues["IDKhuVuc"].ToString();
             data = new dtBan();
-            data.Sua(ID, dtBan.LayKyHieuKhuVuc(IDKhuVuc) + " - " + TenBan, IDKhuVuc, dtBan.IDChiNhanh(IDKhuVuc));
+            data.Sua(ID, TenBan, IDKhuVuc);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
-        }
-
-        protected void ASPxFormLayout1_E2_Click(object sender, EventArgs e)
-        {
-            popupThemKhachHang.ShowOnPageLoad = true;
-        }
-
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            int TuSo = Int32.Parse(txtTuSo.Text);
-            int DenSo = Int32.Parse(txtDenSo.Text);
-            string IDKhuVuc = cmbKhuVuc.Value.ToString();
-            string IDChiNhanh = dtBan.IDChiNhanh(IDKhuVuc);
-            string KyHieu = dtBan.LayKyHieuKhuVuc(IDKhuVuc);
-            for (int i = TuSo; i <= DenSo; i++)
-            {
-                string MaBan = dtBan.Dem_Max(IDKhuVuc);
-                data = new dtBan();
-                if (dtBan.KTTenBan_IDKhuVuc(KyHieu + " - " + i.ToString(), IDKhuVuc) == true)
-                {
-                    data.Them(MaBan, KyHieu + " - " + i, IDKhuVuc, IDChiNhanh);
-                }
-            }
-            txtDenSo.Text = "";
-            txtDenSo.Text = "";
-            cmbKhuVuc.Text = "";
-            LoadGrid();
-            popupThemKhachHang.ShowOnPageLoad = false;
-            
-        }
-
-        protected void btnClose_Click(object sender, EventArgs e)
-        {
-            txtDenSo.Text = "";
-            txtDenSo.Text = "";
-            cmbKhuVuc.Text = "";
-            popupThemKhachHang.ShowOnPageLoad = false;
         }
     }
 }

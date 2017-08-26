@@ -8,6 +8,13 @@ namespace QLCafe.DTO
 {
     public class DTO_KhuVuc
     {
+        private int iD;
+
+        public int ID
+        {
+          get { return iD; }
+          set { iD = value; }
+        }
         private string makhuvuc;
 
         public string Makhuvuc
@@ -50,6 +57,7 @@ namespace QLCafe.DTO
             get { return daxoa; }
             set { daxoa = value; }
         }
-
+        
+       
     }
 }

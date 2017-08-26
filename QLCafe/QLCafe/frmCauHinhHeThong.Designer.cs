@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCauHinhHeThong));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLayCSDL = new DevExpress.XtraEditors.SimpleButton();
-            this.txtDataSource = new DevExpress.XtraEditors.TextEdit();
             this.txtDatabase = new DevExpress.XtraEditors.TextEdit();
             this.txtUserName = new DevExpress.XtraEditors.TextEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
@@ -45,18 +43,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLuuLai = new DevExpress.XtraEditors.SimpleButton();
             this.btnKiemTra = new DevExpress.XtraEditors.SimpleButton();
+            this.txtDataSource = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatabase.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 18);
+            this.label1.Location = new System.Drawing.Point(26, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(316, 19);
             this.label1.TabIndex = 15;
@@ -64,7 +63,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnLayCSDL);
             this.groupBox1.Controls.Add(this.txtDataSource);
             this.groupBox1.Controls.Add(this.txtDatabase);
             this.groupBox1.Controls.Add(this.txtUserName);
@@ -74,7 +72,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 55);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(342, 140);
@@ -82,41 +80,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cấu Hình";
             // 
-            // btnLayCSDL
-            // 
-            this.btnLayCSDL.Image = ((System.Drawing.Image)(resources.GetObject("btnLayCSDL.Image")));
-            this.btnLayCSDL.Location = new System.Drawing.Point(306, 20);
-            this.btnLayCSDL.Name = "btnLayCSDL";
-            this.btnLayCSDL.Size = new System.Drawing.Size(29, 23);
-            this.btnLayCSDL.TabIndex = 4;
-            // 
-            // txtDataSource
-            // 
-            this.txtDataSource.Location = new System.Drawing.Point(98, 22);
-            this.txtDataSource.Name = "txtDataSource";
-            this.txtDataSource.Size = new System.Drawing.Size(204, 20);
-            this.txtDataSource.TabIndex = 3;
-            // 
             // txtDatabase
             // 
-            this.txtDatabase.Location = new System.Drawing.Point(98, 49);
+            this.txtDatabase.Location = new System.Drawing.Point(98, 48);
             this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(238, 20);
+            this.txtDatabase.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDatabase.Properties.Appearance.Options.UseFont = true;
+            this.txtDatabase.Size = new System.Drawing.Size(238, 22);
             this.txtDatabase.TabIndex = 3;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(98, 76);
+            this.txtUserName.Location = new System.Drawing.Point(98, 75);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(238, 20);
+            this.txtUserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Properties.Appearance.Options.UseFont = true;
+            this.txtUserName.Size = new System.Drawing.Size(238, 22);
             this.txtUserName.TabIndex = 3;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(98, 101);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.UseSystemPasswordChar = true;
-            this.txtPassword.Size = new System.Drawing.Size(238, 20);
+            this.txtPassword.Size = new System.Drawing.Size(238, 22);
             this.txtPassword.TabIndex = 3;
             // 
             // label4
@@ -124,7 +113,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(236, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 16);
+            this.label4.Size = new System.Drawing.Size(0, 18);
             this.label4.TabIndex = 2;
             // 
             // label7
@@ -132,7 +121,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(13, 104);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 16);
+            this.label7.Size = new System.Drawing.Size(74, 18);
             this.label7.TabIndex = 0;
             this.label7.Text = "Password:";
             // 
@@ -141,7 +130,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 77);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 16);
+            this.label6.Size = new System.Drawing.Size(87, 18);
             this.label6.TabIndex = 0;
             this.label6.Text = "User Name:";
             // 
@@ -150,7 +139,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 16);
+            this.label3.Size = new System.Drawing.Size(75, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Database:";
             // 
@@ -159,16 +148,17 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(88, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "DataSource:";
             // 
             // linkLienHe
             // 
             this.linkLienHe.AutoSize = true;
+            this.linkLienHe.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLienHe.Location = new System.Drawing.Point(178, 240);
             this.linkLienHe.Name = "linkLienHe";
-            this.linkLienHe.Size = new System.Drawing.Size(125, 13);
+            this.linkLienHe.Size = new System.Drawing.Size(182, 18);
             this.linkLienHe.TabIndex = 17;
             this.linkLienHe.TabStop = true;
             this.linkLienHe.Text = "CÔNG TY GPM VIỆT NAM";
@@ -177,31 +167,49 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(67, 240);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(27, 240);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.Size = new System.Drawing.Size(156, 18);
             this.label5.TabIndex = 16;
             this.label5.Text = "Mọi chi tiết xin liên hệ :";
             // 
             // btnLuuLai
             // 
+            this.btnLuuLai.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuuLai.Appearance.Options.UseFont = true;
             this.btnLuuLai.Image = ((System.Drawing.Image)(resources.GetObject("btnLuuLai.Image")));
-            this.btnLuuLai.Location = new System.Drawing.Point(65, 201);
+            this.btnLuuLai.Location = new System.Drawing.Point(45, 201);
             this.btnLuuLai.Name = "btnLuuLai";
-            this.btnLuuLai.Size = new System.Drawing.Size(118, 30);
+            this.btnLuuLai.Size = new System.Drawing.Size(134, 30);
             this.btnLuuLai.TabIndex = 18;
             this.btnLuuLai.Text = "Lưu lại cấu hình";
             this.btnLuuLai.Click += new System.EventHandler(this.btnLuuLai_Click);
             // 
             // btnKiemTra
             // 
+            this.btnKiemTra.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKiemTra.Appearance.Options.UseFont = true;
             this.btnKiemTra.Image = ((System.Drawing.Image)(resources.GetObject("btnKiemTra.Image")));
             this.btnKiemTra.Location = new System.Drawing.Point(196, 201);
             this.btnKiemTra.Name = "btnKiemTra";
-            this.btnKiemTra.Size = new System.Drawing.Size(119, 30);
+            this.btnKiemTra.Size = new System.Drawing.Size(136, 30);
             this.btnKiemTra.TabIndex = 19;
             this.btnKiemTra.Text = "Kiểm tra kết nối";
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
+            // 
+            // txtDataSource
+            // 
+            this.txtDataSource.Location = new System.Drawing.Point(98, 17);
+            this.txtDataSource.Name = "txtDataSource";
+            this.txtDataSource.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataSource.Properties.Appearance.Options.UseFont = true;
+            this.txtDataSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDataSource.Properties.Items.AddRange(new object[] {
+            "local"});
+            this.txtDataSource.Size = new System.Drawing.Size(238, 24);
+            this.txtDataSource.TabIndex = 4;
             // 
             // frmCauHinhHeThong
             // 
@@ -223,10 +231,10 @@
             this.Load += new System.EventHandler(this.frmCauHinhHeThong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatabase.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +244,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DevExpress.XtraEditors.TextEdit txtDataSource;
         private DevExpress.XtraEditors.TextEdit txtDatabase;
         private DevExpress.XtraEditors.TextEdit txtUserName;
         private DevExpress.XtraEditors.TextEdit txtPassword;
@@ -249,6 +256,6 @@
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.SimpleButton btnLuuLai;
         private DevExpress.XtraEditors.SimpleButton btnKiemTra;
-        private DevExpress.XtraEditors.SimpleButton btnLayCSDL;
+        private DevExpress.XtraEditors.ComboBoxEdit txtDataSource;
     }
 }

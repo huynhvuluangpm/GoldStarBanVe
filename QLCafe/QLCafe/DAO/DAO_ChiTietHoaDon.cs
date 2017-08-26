@@ -31,6 +31,18 @@ namespace QLCafe.DAO
             }
             return list;
         }
-        
+
+        public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan)
+        {
+
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2}", IDBan, IDHangHoa, IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

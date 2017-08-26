@@ -9,18 +9,17 @@ namespace BanHang.Data
 {
     public class dtKhuVuc
     {
-        public void Sua(string ID, string GhiChu, string TenKhuVuc, string TyLe, string IDChiNhanh, string KyHieu)
+        public void Sua(string ID, string GhiChu, string TenKhuVuc, string TyLe, string IDChiNhanh)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [CF_KhuVuc] SET [KyHieu] = @KyHieu , [IDChiNhanh] = @IDChiNhanh,[TyLe] = @TyLe,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [CF_KhuVuc] SET [IDChiNhanh] = @IDChiNhanh,[TyLe] = @TyLe,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
-                        myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@TenKhuVuc", TenKhuVuc);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
@@ -54,17 +53,16 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Them(string MaKhuVuc, string TenKhuVuc, string TyLe, string IDChiNhanh, string GhiChu, string KyHieu)
+        public void Them(string MaKhuVuc, string TenKhuVuc, string TyLe, string IDChiNhanh, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[TyLe],[IDChiNhanh], [NgayCapNhat],[GhiChu],[KyHieu]) VALUES (@MaKhuVuc,@TenKhuVuc,@TyLe,@IDChiNhanh, getdate(),@GhiChu,@KyHieu)";
+                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[TyLe],[IDChiNhanh], [NgayCapNhat],[GhiChu]) VALUES (@MaKhuVuc,@TenKhuVuc,@TyLe,@IDChiNhanh, getdate(),@GhiChu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
-                        myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
                         myCommand.Parameters.AddWithValue("@TyLe", TyLe);

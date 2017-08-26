@@ -147,7 +147,6 @@
             this.Name = "frmDatBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "THÔNG TIN KHÁCH ĐẶT BÀN";
-//            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDatBan_FormClosing);
             this.Load += new System.EventHandler(this.frmDatBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDienThoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).EndInit();

@@ -60,44 +60,50 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(342, 102);
+            this.groupBox1.Size = new System.Drawing.Size(378, 112);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đăng nhập";
             // 
             // ckeHienMatKhau
             // 
-            this.ckeHienMatKhau.Location = new System.Drawing.Point(113, 79);
+            this.ckeHienMatKhau.Location = new System.Drawing.Point(129, 83);
             this.ckeHienMatKhau.Name = "ckeHienMatKhau";
+            this.ckeHienMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckeHienMatKhau.Properties.Appearance.Options.UseFont = true;
             this.ckeHienMatKhau.Properties.Caption = "Hiện thị mật khẩu";
-            this.ckeHienMatKhau.Size = new System.Drawing.Size(117, 19);
+            this.ckeHienMatKhau.Size = new System.Drawing.Size(140, 22);
             this.ckeHienMatKhau.TabIndex = 4;
             this.ckeHienMatKhau.CheckedChanged += new System.EventHandler(this.ckeHienMatKhau_CheckedChanged);
             // 
             // txtTenDangNhap
             // 
-            this.txtTenDangNhap.Location = new System.Drawing.Point(113, 22);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(129, 28);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
-            this.txtTenDangNhap.Size = new System.Drawing.Size(212, 20);
+            this.txtTenDangNhap.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenDangNhap.Properties.Appearance.Options.UseFont = true;
+            this.txtTenDangNhap.Size = new System.Drawing.Size(237, 22);
             this.txtTenDangNhap.TabIndex = 3;
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(113, 51);
+            this.txtMatKhau.Location = new System.Drawing.Point(129, 57);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhau.Properties.Appearance.Options.UseFont = true;
             this.txtMatKhau.Properties.UseSystemPasswordChar = true;
-            this.txtMatKhau.Size = new System.Drawing.Size(212, 20);
+            this.txtMatKhau.Size = new System.Drawing.Size(237, 22);
             this.txtMatKhau.TabIndex = 3;
             // 
             // linkDoiMatKhau
             // 
             this.linkDoiMatKhau.AutoSize = true;
-            this.linkDoiMatKhau.Location = new System.Drawing.Point(251, 79);
+            this.linkDoiMatKhau.Location = new System.Drawing.Point(271, 85);
             this.linkDoiMatKhau.Name = "linkDoiMatKhau";
-            this.linkDoiMatKhau.Size = new System.Drawing.Size(84, 16);
+            this.linkDoiMatKhau.Size = new System.Drawing.Size(95, 18);
             this.linkDoiMatKhau.TabIndex = 2;
             this.linkDoiMatKhau.TabStop = true;
             this.linkDoiMatKhau.Text = "Đổi mật khẩu";
@@ -106,26 +112,26 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(236, 76);
+            this.label4.Location = new System.Drawing.Point(236, 82);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 16);
+            this.label4.Size = new System.Drawing.Size(0, 18);
             this.label4.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 52);
+            this.label3.Location = new System.Drawing.Point(13, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Mật khẩu:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 23);
+            this.label2.Location = new System.Drawing.Point(13, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 16);
+            this.label2.Size = new System.Drawing.Size(114, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên đăng nhập:";
             // 
@@ -142,9 +148,10 @@
             // linkCauHinh
             // 
             this.linkCauHinh.AutoSize = true;
-            this.linkCauHinh.Location = new System.Drawing.Point(22, 174);
+            this.linkCauHinh.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkCauHinh.Location = new System.Drawing.Point(12, 181);
             this.linkCauHinh.Name = "linkCauHinh";
-            this.linkCauHinh.Size = new System.Drawing.Size(127, 13);
+            this.linkCauHinh.Size = new System.Drawing.Size(174, 18);
             this.linkCauHinh.TabIndex = 2;
             this.linkCauHinh.TabStop = true;
             this.linkCauHinh.Text = "Cấu hình kết nối máy chủ";
@@ -153,9 +160,10 @@
             // linkLienHe
             // 
             this.linkLienHe.AutoSize = true;
-            this.linkLienHe.Location = new System.Drawing.Point(171, 206);
+            this.linkLienHe.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLienHe.Location = new System.Drawing.Point(183, 222);
             this.linkLienHe.Name = "linkLienHe";
-            this.linkLienHe.Size = new System.Drawing.Size(125, 13);
+            this.linkLienHe.Size = new System.Drawing.Size(182, 18);
             this.linkLienHe.TabIndex = 5;
             this.linkLienHe.TabStop = true;
             this.linkLienHe.Text = "CÔNG TY GPM VIỆT NAM";
@@ -164,9 +172,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(60, 206);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(30, 222);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.Size = new System.Drawing.Size(156, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mọi chi tiết xin liên hệ :";
             // 
@@ -176,18 +185,22 @@
             // 
             // btnDangNhap
             // 
+            this.btnDangNhap.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Appearance.Options.UseFont = true;
             this.btnDangNhap.Image = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.Image")));
-            this.btnDangNhap.Location = new System.Drawing.Point(156, 166);
+            this.btnDangNhap.Location = new System.Drawing.Point(190, 178);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(92, 30);
+            this.btnDangNhap.Size = new System.Drawing.Size(106, 30);
             this.btnDangNhap.TabIndex = 6;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // btnThoat
             // 
+            this.btnThoat.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.Appearance.Options.UseFont = true;
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
-            this.btnThoat.Location = new System.Drawing.Point(262, 166);
+            this.btnThoat.Location = new System.Drawing.Point(302, 178);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 30);
             this.btnThoat.TabIndex = 6;
@@ -198,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 231);
+            this.ClientSize = new System.Drawing.Size(402, 255);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.linkLienHe);
@@ -215,7 +228,6 @@
             this.Text = "ĐĂNG NHẬP HỆ THỐNG";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDangNhap_FormClosing);
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
-          
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckeHienMatKhau.Properties)).EndInit();

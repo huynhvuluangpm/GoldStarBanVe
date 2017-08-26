@@ -86,7 +86,7 @@ namespace QLCafe
 
         private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn thật sự muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn thật sự muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
             }
@@ -107,6 +107,8 @@ namespace QLCafe
                 txtMatKhau.Properties.UseSystemPasswordChar = true;
             }
         }
+
+
 
 
   

@@ -119,13 +119,22 @@ namespace QLCafe.DTO
         public DTO_HoaDon(DataRow dr)
         {
             this.ID = (int)dr["ID"];
-            this.GioRa = (DateTime?)dr["GioRa"];
+
+            var KT = dr["GioRa"];
+            if(KT.ToString() != "")
+                this.GioRa = (DateTime?)KT;
             this.GioVao = (DateTime?)dr["GioVao"];
             this.IDBan = (int)dr["IDBan"];
             this.TrangThai = (int)dr["TrangThai"];
-            this.IDKhachHang = (int)dr["IDKhachHang"];
-            this.MaHoaDon = dr["MaHoaDon"].ToString() ;
-            this.IDNhanVien = (int)dr["IDNhanVien"];
+            var KH = dr["IDKhachHang"];
+            if (KH.ToString() != "")
+                this.IDKhachHang = (int)KH;
+            var MaHD = dr["MaHoaDon"];
+            if(MaHD.ToString() !="")
+                this.MaHoaDon = MaHD.ToString();
+            var IDNV = dr["IDNhanVien"];
+            if(IDNV.ToString() !="")
+                this.IDNhanVien = (int)IDNV;
             this.TongTien = float.Parse(dr["TongTien"].ToString());
             this.GiamGia = float.Parse(dr["GiamGia"].ToString());
             this.KhachCanTra = float.Parse(dr["KhachCanTra"].ToString());

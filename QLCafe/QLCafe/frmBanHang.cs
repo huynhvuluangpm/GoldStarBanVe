@@ -25,20 +25,25 @@ namespace QLCafe
         {
             InitializeComponent();
             DanhSachBan();
-            DanhSachMonAn();
-            cmbDanhSachBan();
-           // DanhSachHangHoa();
-            DanhSachNhomHangHoa();
         }
         public static int IDBan = 0;
+        public static DateTime GioVao;
         private void frmBanHang_Load(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
-
+            timer1.Start();
+            KhachHang();
+            // WindowState = FormWindowState.Maximized;
+            txtTongTien.ReadOnly = true;
+            txtGiamGia.ReadOnly = true;
+            txtKhachCanTra.ReadOnly = true;
+            txtTienThoi.ReadOnly = true;
+            txtDiemTichLuy.ReadOnly = true;
+            txtKhachThanhToan.ReadOnly = true;
+            txtTenDangNhap.Text = "Nhân viên: " + frmDangNhap.NguoiDung.Tennguoidung;
         }
         public  void DanhSachBan()
         {
-
+            IDBan = 0;
             tblTable1.Controls.Clear();
             string IDChiNhanh = frmDangNhap.NguoiDung.Idchinhanh;
             DataTable dt = BUS_KhuVuc.DanhSachBanTheoKhuVuc(IDChiNhanh);
@@ -60,7 +65,7 @@ namespace QLCafe
             float SLPhucVu = BUS_BAN.DanhSachThongKe(dr11["ID"].ToString(), 2);
             float TongSLBan = BUS_BAN.DanhSachThongKe(dr11["ID"].ToString(), 2) + BUS_BAN.DanhSachThongKe(dr11["ID"].ToString(), 0) + BUS_BAN.DanhSachThongKe(dr11["ID"].ToString(), 1);
             float TyLePhucVu = SLPhucVu / (float)TongSLBan;
-            txtTyLyPhucVu.Text = "Tỷ lệ phục vụ: " + Math.Round(TyLePhucVu, 2) + "%";
+            txtTyLyPhucVu.Text = "Tỷ lệ phục vụ: " + Math.Round(TyLePhucVu, 2)*100 + "%";
             foreach (DataRow dr in dt.Rows)
             {
                 string TenKhuVuc = dr["TenKhuVuc"].ToString();
@@ -71,8 +76,8 @@ namespace QLCafe
                     int TrangThai = item.Trangthai;
                     string TenBan = item.Tenban;
                     SimpleButton btn = new SimpleButton();
-                    btn.Width = 50;
-                    btn.Height = 50;
+                    btn.Width = 80;
+                    btn.Height = 80;
                     btn.Text = TenBan;
                     btn.Click += btn_Click;
                     btn.MouseDown +=btn_MouseDown;
@@ -87,11 +92,14 @@ namespace QLCafe
                             btn.ForeColor = Color.OrangeRed;
                             btn.StyleController = null;
                             btn.LookAndFeel.UseDefaultLookAndFeel = false;
-                            btn.ToolTip = "Bàn có người đặt";
+                            List<DTO_DatBan> thongtinnguoidat = DAO_DatBan.Instance.LoadTableList(item.Id);
+                            foreach (DTO_DatBan dr1 in thongtinnguoidat)
+                            {
+                                btn.ToolTip = dr1.TenKhachHang + Environment.NewLine + dr1.DienThoai +  Environment.NewLine + dr1.GioDat;
+                            }
                             btn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Skin;
                             tblTable1.Controls.Add(btn);
                             break;
-
                         case 2:
                             btn.ForeColor = Color.Red;
                             btn.StyleController = null;
@@ -105,66 +113,53 @@ namespace QLCafe
             }
         }
 
+        public void KhachHang()
+        {
+            List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
+            cmbTenKhachHang.Properties.DataSource = listKhachHang;
+            cmbTenKhachHang.Properties.ValueMember = "ID";
+            cmbTenKhachHang.Properties.DisplayMember = "TenKhachHang";
+        }
         private void btn_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
+                 IDBan = 0;
                  IDBan = ((sender as SimpleButton).Tag as DTO_BAN).Id;
                  menuBan.ShowPopup(Control.MousePosition);
+                 int TrangThai = ((sender as SimpleButton).Tag as DTO_BAN).Trangthai;
+                 if (TrangThai == 2)
+                 {
+                     GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
+                 }
+                 else
+                 {
+                     GioVao = DateTime.Parse(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"));
+                 }
             }
         }
        
         public void HienThiHoaDon(int id)
         {
-            List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(DAO_HoaDon.Instance.GetHoaDonByIDBan(id));
+            List<DTO_DanhSachMenu> DanhSachHoaDon = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(id));
+            //List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(DAO_HoaDon.Instance.GetHoaDonByIDBan(id));
+           
+            gridControlCTHD.DataSource = null;
+            gridControlCTHD.Refresh();
+            gridControlCTHD.DataSource = DanhSachHoaDon;
+            txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(id)).ToString();
+            txtKhachCanTra.Text = DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(id)).ToString();
+            
         }
         private void btn_Click(object sender, EventArgs e)
         {
             int IDBan = ((sender as SimpleButton).Tag as DTO_BAN).Id;
             HienThiHoaDon(IDBan);
+            txtKhachThanhToan.ReadOnly = false;
+            //txtGioVao.Text = "Giờ Vào"
         }
-        public void DanhSachMonAn()
-        {
-            DSMonAn.BeginUpdate();
-            DSMonAn.Nodes.Clear();
-            DataTable dt = BUS_NhomHang.DanhSachNhomHang();
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    string TenNhom = dr["TenNhom"].ToString();
-                    string IDNhom = dr["ID"].ToString();
-                    TreeNode root = new TreeNode(TenNhom);
-                    DataTable dthh = BUS_HangHoa.DSHangHoa(IDNhom);
-                    foreach (DataRow drhh in dthh.Rows)
-                    {
-                        string IDHH = drhh["ID"].ToString();
-                        string TenHangHoa = drhh["TenHangHoa"].ToString();
-                        root.Nodes.Add(TenHangHoa);
-                    }
-                    DSMonAn.Nodes.Add(root);
-                    DSMonAn.EndUpdate();
-                }
-            }
-          
-        }
-        public void cmbDanhSachBan()
-        {
-            string IDChiNhanh = frmDangNhap.NguoiDung.Idchinhanh;
-            DataTable dt = BUS_KhuVuc.DanhSachBanTheoKhuVuc(IDChiNhanh);
-            foreach (DataRow dr in dt.Rows)
-            {
-                string IDKhuVuc = dr["ID"].ToString();
-                DataTable btBan = BUS_BAN.DanhSachBanTheoKhuVuc(IDKhuVuc);
-                foreach (DataRow drban in btBan.Rows)
-                {
-                    cmbBan.Properties.Items.Add(drban["TenBan"].ToString());
-                    
-                }
-                
-            }
-        }
-
+       
+        
         private void frmBanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn thật sự muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
@@ -173,39 +168,25 @@ namespace QLCafe
             }
         }
 
-        private void DSMonAn_DragOver(object sender, DragEventArgs e)
-        {
-            DSMonAn.Scroll();
-        }
-        public void DanhSachNhomHangHoa()
-        {
-            List<DTO_NhomHangHoa> danhsachnhomhang = DAO_NhomHang.Instance.DanhSanhNhomHangFull();
-            gridNhomHangHoa.Properties.DataSource = danhsachnhomhang;
-            gridNhomHangHoa.Properties.DisplayMember = "TenNhom";
-            gridNhomHangHoa.Properties.ValueMember = "ID";
-        }
-        public void DanhSachHangHoaID(int id)
-        {
-            List<DTO_HangHoa> danhsachhanghoa = DAO_HangHoa.Instance.DanhSachHangHoaID(id);
-            gridHangHoa.Properties.DataSource = danhsachhanghoa;
-            gridHangHoa.Properties.DisplayMember = "TenHangHoa";
-            gridHangHoa.Properties.ValueMember = "ID";
-        }
-        private void gridNhomHangHoa_EditValueChanged(object sender, EventArgs e)
-        {
-            int id = 0;
-            object displayValue = gridNhomHangHoa.EditValue;
-            id = Int32.Parse(displayValue.ToString());
-            DanhSachHangHoaID(id);
-        }
-
+     
         private void barButtonDatBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-            frmDatBan fr = new frmDatBan();
-            fr.MyGetData = new frmDatBan.GetString(GetValue);
-            fr.ShowDialog();
+            if (DAO_BAN.TrangThaiBan(IDBan) == 0)
+            {
+                frmDatBan fr = new frmDatBan();
+                fr.MyGetData = new frmDatBan.GetString(GetValue);
+                fr.ShowDialog();
+            }
+            else if (DAO_BAN.TrangThaiBan(IDBan) == 1)
+            {
+                MessageBox.Show("Bàn đã có người đặt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Bàn đã có người ngồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         public void GetValue(String str1, String str2,DateTime a)
         {
             string TenKhachHang = str1;
@@ -215,13 +196,13 @@ namespace QLCafe
             if (KT == true)
             {
                 DAO_BAN.DoiTrangThaiDatBan(IDBan);
-                MessageBox.Show("Đặt bàn thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 DanhSachBan();
+                MessageBox.Show("Đặt bàn thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show("Đặt bàn Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DanhSachBan();
+                MessageBox.Show("Đặt bàn Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void barButtonXoaBan_ItemClick(object sender, ItemClickEventArgs e)
@@ -231,15 +212,149 @@ namespace QLCafe
                 bool KT = DAO_BAN.XoaBanVeMatDinh(IDBan);
                 if (KT == true)
                 {
-                    MessageBox.Show("Cập Nhật Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    DAO_HoaDon.XoaDatBan(IDBan);
+                    DAO_DatBan.XoaKhachDat(IDBan);
                     DanhSachBan();
+                   
+                    gridControlCTHD.DataSource = null;
+                    gridControlCTHD.Refresh();
+                    MessageBox.Show("Cập Nhật Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                   
                 }
                 else
                 {
-                    MessageBox.Show("Cập Nhật Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DanhSachBan();
+                    MessageBox.Show("Cập Nhật Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        } 
+        }
+
+        private void barButtonChonMon_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmGoiMon fr = new frmGoiMon();
+            fr.MyGetData = new frmGoiMon.GetKT(GetValueGoiMon);
+            fr.ShowDialog();
+        }
+
+        private void barButtonChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (DAO_BAN.TrangThaiBan(IDBan) == 2)
+            {
+                frmChuyenBan fr = new frmChuyenBan();
+                fr.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bàn chưa có món ăn. Không thể chuyển bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void GetValueGoiMon(int KT)
+        {
+            if (KT == 1)
+            {
+                DanhSachBan();
+                gridControlCTHD.DataSource = null;
+                gridControlCTHD.Refresh();
+                MessageBox.Show("Gọi Món Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Gọi Món Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DanhSachBan();
+            }
+        }
+        private void barButtonTachBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (DAO_BAN.TrangThaiBan(IDBan) == 2)
+            {
+                frmChuyenBan fr = new frmChuyenBan();
+                fr.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bàn chưa có món ăn. Không thể tách bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void barButtonGopBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (DAO_BAN.TrangThaiBan(IDBan) == 2)
+            {
+                frmTachBan fr = new frmTachBan();
+                fr.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bàn chưa có món ăn. Không thể gộp bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtKhachThanhToan_EditValueChanged(object sender, EventArgs e)
+        {
+            float KhachThanhToan = float.Parse(txtKhachThanhToan.EditValue.ToString());
+            float KhachCanThanhToan = float.Parse(txtKhachCanTra.EditValue.ToString());
+            //if (KhachThanhToan >= KhachCanThanhToan)
+            //{
+                txtTienThoi.Text = (KhachThanhToan - KhachCanThanhToan).ToString();
+           // }
+            //else
+            //{
+            //    MessageBox.Show("Khách thanh toán không đủ số tiền?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
+        {
+            txtDiemTichLuy.ReadOnly = false;
+            DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
+            if (tblThongTin.Rows.Count > 0)
+            {
+                DataRow dr = tblThongTin.Rows[0];
+                txtMaKhachHang.Text = dr["MaKhachHang"].ToString();
+               
+                txtDienThoai.Text = dr["DienThoai"].ToString();
+                txtCMND.Text = dr["CMND"].ToString();
+                txtDiem.Text = dr["DiemTichLuy"].ToString();
+
+            }
+        }
+
+        private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
+        {
+
+            int SoDiemCanDoi = Int32.Parse(txtDiemTichLuy.EditValue.ToString());
+            float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
+            if (SoDiemCanDoi <= DiemTichLuy)
+            {
+                float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
+                float TongTien = float.Parse(txtTongTien.EditValue.ToString());
+                txtGiamGia.Text = (SoTienDoi * SoDiemCanDoi) + "";
+                txtKhachCanTra.Text = (TongTien - (SoTienDoi * SoDiemCanDoi)) + "";
+                txtKhachThanhToan.Text = "0";
+                txtTienThoi.Text = "0";
+            }
+            else
+            {
+                txtDiemTichLuy.Text = "0";
+                MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnThemKhachHang_Click(object sender, EventArgs e)
+        {
+            frmThemKhachHang fr = new frmThemKhachHang();
+            fr.ShowDialog();
+        }
+
+      
+
+        
+
+      
     }
 }

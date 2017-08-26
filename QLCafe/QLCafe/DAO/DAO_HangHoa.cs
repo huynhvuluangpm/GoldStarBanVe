@@ -26,7 +26,13 @@ namespace QLCafe.DAO
             return data;
         }
 
-
+        public static DataTable DanhSachHangHoa_ID(int IDHangHoa)
+        {
+            string sTruyVan = string.Format(@"SELECT [CF_HangHoa].*,[CF_DonViTinh].TenDonViTinh FROM [CF_HangHoa],[CF_DonViTinh] WHERE [CF_DonViTinh].ID = [CF_HangHoa].IDDonViTinh   AND [CF_HangHoa].ID =  {0}", IDHangHoa);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            return data;
+        }
         private static DAO_HangHoa instance;
 
         internal static DAO_HangHoa Instance
