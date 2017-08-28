@@ -86,6 +86,7 @@
     <Compile Include="DAO\DAO_KhachHang.cs" />
     <Compile Include="DAO\DAO_KhuVuc.cs" />
     <Compile Include="DAO\DAO_NhomHang.cs" />
+    <Compile Include="DAO\DAO_NhomKhachHang.cs" />
     <Compile Include="DAO\DAO_Setting.cs" />
     <Compile Include="DAO\DAO_TestKetNoi.cs" />
     <Compile Include="DAO\DataProvider.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="DTO\DTO_KhachHang.cs" />
     <Compile Include="DTO\DTO_KhuVuc.cs" />
     <Compile Include="DTO\DTO_NhomHangHoa.cs" />
+    <Compile Include="DTO\DTO_NhomKhachHang.cs" />
     <Compile Include="DTO\DTO_WriteDataConnect.cs" />
     <Compile Include="frmBanHang.cs">
       <SubType>Form</SubType>

@@ -36,10 +36,9 @@
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.txtDienThoai = new DevExpress.XtraEditors.TextEdit();
             this.txtTenKhachHang = new DevExpress.XtraEditors.TextEdit();
-            this.timeGioDat = new DevExpress.XtraEditors.TimeEdit();
+            this.timeGioDat = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.txtDienThoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeGioDat.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -95,7 +94,7 @@
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(135, 63);
+            this.txtDienThoai.Location = new System.Drawing.Point(135, 61);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDienThoai.Properties.Appearance.Options.UseFont = true;
@@ -115,26 +114,22 @@
             // 
             // timeGioDat
             // 
-            this.timeGioDat.EditValue = new System.DateTime(2017, 8, 23, 0, 0, 0, 0);
-            this.timeGioDat.Location = new System.Drawing.Point(135, 98);
+            this.timeGioDat.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            this.timeGioDat.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeGioDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeGioDat.Location = new System.Drawing.Point(134, 96);
             this.timeGioDat.Name = "timeGioDat";
-            this.timeGioDat.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeGioDat.Properties.Appearance.Options.UseFont = true;
-            this.timeGioDat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.timeGioDat.Properties.DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss tt";
-            this.timeGioDat.Properties.EditFormat.FormatString = "dd/MM/yyyy hh:mm:ss tt";
-            this.timeGioDat.Size = new System.Drawing.Size(205, 24);
-            this.timeGioDat.TabIndex = 2;
+            this.timeGioDat.Size = new System.Drawing.Size(206, 26);
+            this.timeGioDat.TabIndex = 4;
             // 
             // frmDatBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 206);
+            this.Controls.Add(this.timeGioDat);
             this.Controls.Add(this.txtTenKhachHang);
             this.Controls.Add(this.txtDienThoai);
-            this.Controls.Add(this.timeGioDat);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.labelControl3);
@@ -150,7 +145,6 @@
             this.Load += new System.EventHandler(this.frmDatBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDienThoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeGioDat.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +159,7 @@
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.XtraEditors.TextEdit txtDienThoai;
         private DevExpress.XtraEditors.TextEdit txtTenKhachHang;
-        private DevExpress.XtraEditors.TimeEdit timeGioDat;
+        private System.Windows.Forms.DateTimePicker timeGioDat;
 
     }
 }

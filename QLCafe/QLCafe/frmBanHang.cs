@@ -115,6 +115,8 @@ namespace QLCafe
 
         public void KhachHang()
         {
+            cmbTenKhachHang.Properties.DataSource = null;
+            cmbTenKhachHang.Refresh();
             List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
             cmbTenKhachHang.Properties.DataSource = listKhachHang;
             cmbTenKhachHang.Properties.ValueMember = "ID";
@@ -348,9 +350,21 @@ namespace QLCafe
         private void btnThemKhachHang_Click(object sender, EventArgs e)
         {
             frmThemKhachHang fr = new frmThemKhachHang();
+            fr.KTTrangThai = new frmThemKhachHang.GetKT(GetValueThemKhachHang);
             fr.ShowDialog();
         }
-
+        public void GetValueThemKhachHang(int KT)
+        {
+            if (KT == 1)
+            {
+                KhachHang();
+                MessageBox.Show("Thêm Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
       
 
         

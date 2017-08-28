@@ -27,6 +27,7 @@ namespace QLCafe
 
         private void frmDatBan_Load(object sender, EventArgs e)
         {
+           
             txtTenKhachHang.Select();
         }
 

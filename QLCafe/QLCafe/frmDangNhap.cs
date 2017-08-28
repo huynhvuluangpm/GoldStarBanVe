@@ -43,10 +43,17 @@ namespace QLCafe
             fr.ShowDialog();
             this.Show();
         }
-        
+
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            DangNhap();
+            if (DAO_TestKetNoi.IsConnectedToInternet("google.com"))
+            {
+                DangNhap();
+            }
+            else
+            {
+                MessageBox.Show("Không có kết nối Internet. Vui lòng kiểm tra lại?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void DangNhap()
         {

@@ -43,5 +43,30 @@ namespace QLCafe.DAO
             else
                 return null;
         }
+
+        public static int KiemTraMaKhachHang(string MaKhachHang)
+        {
+            string sTruyVan = string.Format(@"SELECT * FROM [GPM_KHACHHANG] WHERE MaKhachHang = '{0}'", MaKhachHang);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if(data.Rows.Count == 0)
+                return 0;
+            return 1;
+        }
+
+        public static int KiemTraSDTKhachHang(string SDT)
+        {
+            string sTruyVan = string.Format(@"SELECT * FROM [GPM_KHACHHANG] WHERE DienThoai =  '{0}'", SDT);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count == 0)
+                return 0;
+            return 1;
+        }
+        public static bool ThemKhachHang(int IDNhomKhachHang, string MaKhachHang, string TenKhachHang, DateTime NgaySinh, string CMND, string DiaChi, string DienThoai, string GhiChu)
+        {
+            string sTruyVan = string.Format(@"INSERT INTO GPM_KHACHHANG([IDNhomKhachHang],[MaKhachHang], [TenKhachHang], [NgaySinh], [CMND], [DiaChi], [DienThoai], [GhiChu]) VALUES ('{0}',N'{1}','{2}', '{3}','{4}','{5}','{6}','{7}')", IDNhomKhachHang, MaKhachHang, TenKhachHang, NgaySinh.ToString("yyyy-MM-dd hh:mm:ss"), CMND, DiaChi, DienThoai, GhiChu);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
     }
 }
