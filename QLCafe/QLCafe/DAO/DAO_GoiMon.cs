@@ -28,10 +28,10 @@ namespace QLCafe.DAO
         /// <param name="IDBan"></param>
         /// <param name="GioVao"></param>
         /// <returns></returns>
-        public static object ThemHoaDon(int IDBan, int NhanVien, string TongTien)
+        public static object ThemHoaDon(int IDBan, int NhanVien)
         {
             object ID = null;
-            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien,TongTien,KhachCanTra) OUTPUT INSERTED.ID VALUES ('{0}',getdate(),{1},{2},{3})", IDBan, NhanVien, TongTien, TongTien);
+            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien) OUTPUT INSERTED.ID VALUES ('{0}',getdate(),{1})", IDBan, NhanVien);
             SqlConnection conn = new SqlConnection();
             DAO_ConnectSQL connect = new DAO_ConnectSQL();
             conn = connect.Connect();

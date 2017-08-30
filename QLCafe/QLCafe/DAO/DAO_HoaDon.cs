@@ -81,5 +81,10 @@ namespace QLCafe.DAO
                
             }
         }
+        public static bool CapNhatTongTien(int ID, string TongTien, string KhachCanTra)
+        {
+            string sTruyVan = string.Format(@"UPDATE CF_HoaDon SET [TongTien] = {0}, [KhachCanTra] =  {1} WHERE [ID] = {2} ", TongTien, KhachCanTra, ID);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
     }
 }

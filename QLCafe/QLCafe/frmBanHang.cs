@@ -148,6 +148,7 @@ namespace QLCafe
            
             gridControlCTHD.DataSource = null;
             gridControlCTHD.Refresh();
+      
             gridControlCTHD.DataSource = DanhSachHoaDon;
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(id)).ToString();
             txtKhachCanTra.Text = DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(id)).ToString();
@@ -155,7 +156,7 @@ namespace QLCafe
         }
         private void btn_Click(object sender, EventArgs e)
         {
-            int IDBan = ((sender as SimpleButton).Tag as DTO_BAN).Id;
+            IDBan = ((sender as SimpleButton).Tag as DTO_BAN).Id;
             HienThiHoaDon(IDBan);
             txtKhachThanhToan.ReadOnly = false;
             //txtGioVao.Text = "Giờ Vào"
@@ -250,11 +251,12 @@ namespace QLCafe
                 MessageBox.Show("Bàn chưa có món ăn. Không thể chuyển bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void GetValueGoiMon(int KT)
+        public void GetValueGoiMon(int KT, int IDHoaDon)
         {
             if (KT == 1)
             {
                 DanhSachBan();
+                TinhTongTien(IDHoaDon);
                 gridControlCTHD.DataSource = null;
                 gridControlCTHD.Refresh();
                 MessageBox.Show("Gọi Món Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -365,10 +367,103 @@ namespace QLCafe
                 MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
 
-        
+        private void gridControlCTHD_ProcessGridKey(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && gridView1.State != DevExpress.XtraGrid.Views.Grid.GridState.Editing)
+            {
+                if (MessageBox.Show("Bạn muốn xóa món này ra khỏi bàn?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    int IDban = IDBan;
+                    string MaHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
+                    if (IDban != 0)
+                    {
+                        int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
+                        if (DAO_BanHang.XoaMonAn(IDban, MaHangHoa, IDHoaDon) == true)
+                        {
+                            TinhTongTien(IDHoaDon);
+                            HienThiHoaDon(IDban);
+                            MessageBox.Show("Xóa món ăn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
 
+        public static void TinhTongTien(int IDHoaDon)
+        {
+            List<DTO_ChiTietHoaDon> danhsach = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHoaDon);
+            float TongTien = 0;
+            foreach (DTO_ChiTietHoaDon item in danhsach)
+            {
+                TongTien = TongTien + item.ThanhTien;
+            }
+            DAO_HoaDon.CapNhatTongTien(IDHoaDon, TongTien.ToString(), TongTien.ToString());
+        }
+
+        private void btnXoa_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn muốn xóa món này ra khỏi bàn?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                int IDban = IDBan;
+                string MaHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
+                if (IDban != 0)
+                {
+                    int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
+                    if (DAO_BanHang.XoaMonAn(IDban, MaHangHoa, IDHoaDon) == true)
+                    {
+                        TinhTongTien(IDHoaDon);
+                        HienThiHoaDon(IDban);
+                        MessageBox.Show("Xóa món ăn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        {
+            // Sự kiện này để người ta không chuyển qua dòng khác được khi có lỗi xảy ra nè
+            // Nó nhận giá trị e.Valid của gridView1_ValidateRow để ứng xử
+            // neu e,Valid =True thì nó cho chuyển qua dòng khác hoặc làm tác vụ khác
+            // và ngược lại
+            e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.NoAction;
+        }
+
+        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            string TenHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString();
+            if (MessageBox.Show("Bạn muốn cập nhật số lượng cho món: " + TenHangHoa + "?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                string MaHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
+                int IDban = IDBan;
+                int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
+                int SLMoi = Int32.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString());
+                float GiaTong =  float.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString());
+                if (DAO_ChiTietHoaDon.CapNhatSoLuong(IDHoaDon, (SLMoi * GiaTong).ToString(), SLMoi.ToString(), MaHangHoa) == true)
+                {
+                    TinhTongTien(IDHoaDon);
+                    HienThiHoaDon(IDban);
+                    MessageBox.Show("Cập nhật số lượng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    HienThiHoaDon(IDban);
+                    MessageBox.Show("Cập nhật số lượng không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+           
+               
+        }
+
+       
       
     }
 }

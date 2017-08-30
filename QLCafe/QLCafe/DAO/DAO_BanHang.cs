@@ -34,5 +34,11 @@ namespace QLCafe.DAO
            }
            return 0;
        }
+
+       public static bool XoaMonAn(int IDBan, string MaHangHoa, int IDHoaDon)
+       {
+           string sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietHoaDon] WHERE IDBan = {0} AND [MaHangHoa] = '{1}' AND [IDHoaDon] = '{2}' ", IDBan, MaHangHoa, IDHoaDon);
+           return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+       }
     }
 }

@@ -81,6 +81,7 @@
             // 
             // txtTenDangNhap
             // 
+            this.txtTenDangNhap.EditValue = "nv1";
             this.txtTenDangNhap.Location = new System.Drawing.Point(129, 28);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,6 +91,7 @@
             // 
             // txtMatKhau
             // 
+            this.txtMatKhau.EditValue = "1";
             this.txtMatKhau.Location = new System.Drawing.Point(129, 57);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

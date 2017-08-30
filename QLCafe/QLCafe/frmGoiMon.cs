@@ -22,7 +22,7 @@ namespace QLCafe
         int IDHoaDon = DAO_BanHang.IDHoaDon(frmBanHang.IDBan);
         List<ChiTietHoaDon> listChiTietHoaDon = new List<ChiTietHoaDon>();
 
-        public delegate void GetKT(int KT);
+        public delegate void GetKT(int KT, int IDHoaDon);
         public GetKT MyGetData;
 
         public frmGoiMon()
@@ -212,14 +212,9 @@ namespace QLCafe
             {
                 if (IDHoaDon == 0)
                 {
-                    float TongTien = 0;
-                    foreach (ChiTietHoaDon item in listChiTietHoaDon)
-                    {
-                        TongTien = TongTien + item.ThanhTien;
-                    }
-
                     int IDNhanVien = frmDangNhap.NguoiDung.Id;
-                    object ID = DAO_GoiMon.ThemHoaDon(IDBan, IDNhanVien, TongTien.ToString());
+                    object ID = DAO_GoiMon.ThemHoaDon(IDBan, IDNhanVien);
+                    IDHoaDon = Int32.Parse(ID.ToString());
                     if (ID != null)
                     {
                         foreach (ChiTietHoaDon item in listChiTietHoaDon)
@@ -271,9 +266,13 @@ namespace QLCafe
             }
             if (MyGetData != null)
             {
-                MyGetData(1);
+                MyGetData(1, IDHoaDon);
                 this.Close();
             }
         }
+
+      
+       
+       
     }
 }

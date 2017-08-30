@@ -44,5 +44,10 @@ namespace QLCafe.DAO
             }
             return false;
         }
+        public static bool CapNhatSoLuong(int IDHoaDon, string ThanhTien, string SL, string MaHangHoa)
+        {
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon SET [ThanhTien] = {0}, [SoLuong] =  {1} WHERE [IDHoaDon] = {2} AND  [MaHangHoa] = '{3}' ", ThanhTien, SL, IDHoaDon, MaHangHoa);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
     }
 }
