@@ -136,7 +136,7 @@ namespace QLCafe
                  }
                  else
                  {
-                     GioVao = DateTime.Parse(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"));
+                     GioVao = DateTime.Parse(DateTime.Now.ToString());
                  }
             }
         }
